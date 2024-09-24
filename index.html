@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morse Code Decoder</title>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <hgroup>
+        <h1>Morse Code Decoder</h1>
+        <p>
+          <a
+            target="_blank"
+            href="https://www.bombmanual.com/web/index.html#:~:text=On%20the%20Subject%20of%20Morse%20Code"
+            >For the keeptalking game</a
+          >
+        </p>
+      </hgroup>
+
+      <input
+        type="text"
+        name="morseCodeInput"
+        id="morseCodeInput"
+        class="morseCodeInput"
+        autocomplete="off"
+        placeholder="Enter morse code"
+      />
+      <p class="translationParagraph"></p>
+      <table class="possibleWordsTable"></table>
+      <img
+        class="morseCodeChart"
+        src="./src/svg/morseCodeChart.svg"
+        alt="morse code chart"
+      />
+
+      <footer>
+        <a target="_blank" href="https://github.com/LukaszGreiner">
+          <img
+            height="20 px"
+            src="./src/svg/github-mark.svg"
+            alt="github-mark"
+          />
+          <p>Łukasz Greiner</p></a
+        >
+      </footer>
+    </div>
+    <script type="module" src="dist/app.js"></script>
+  </body>
+</html>
