@@ -13,7 +13,7 @@
 <br/>
 <br/>
 
-<img src="https://github.com/user-attachments/assets/08095524-a821-4dc9-9c47-532e2356ff05" alt="homepage"/>
+![ezgif-4-8e8b00d5c4](https://github.com/user-attachments/assets/e24c8fbf-605d-478a-a3be-00167805b410)
 
 ## Screenshots
 
