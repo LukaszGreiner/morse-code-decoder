@@ -26,6 +26,10 @@ a {
   background-color: $primary-lightest;
 }
 
+.wrapper > {
+  scale: 0.9;
+}
+
 .flex-container {
   padding: 0 $space-smallest;
 }
