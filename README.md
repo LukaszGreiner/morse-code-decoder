@@ -1,6 +1,6 @@
 ![long-logo-bg-x1 5](https://github.com/user-attachments/assets/5c4f3927-11a3-4d4f-bb27-afbdcdb76a49)
+<p><b>Morse Code Decoder</b> allows you to quickly decode <b>Morse Code </b> to <b>english</b> letters and see all possible words for the <br/> <b>"On the Subject of Morse Code"</b> bomb module.</p>
 <p>Unofficial helper for the <a href="https://keeptalkinggame.com/"><b>Keep Talking and Nobody Explodes</b></a> game.</p>
-<p>Decode <b>Morse Code </b> to <b>english</b> letters and see all possible words for the <b>"On the Subject of Morse Code"</b> bomb module.</p>
 
 <br/>
 
