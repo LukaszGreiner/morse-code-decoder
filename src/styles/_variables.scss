@@ -1,0 +1,55 @@
+//colors
+$white: #fafafa;
+$primary-lightest: #f9f7f3;
+$primary-lighter: #cebfa3;
+$primary: #baa27f;
+$primary-darker: #ab8b64;
+$primary-darkest: #2e231c;
+
+//font size
+$font-biggest: 32px;
+$font-bigger: 28px;
+$font-regular: 24px;
+$font-smaller: 20px;
+$font-smallest: 18px;
+
+//spacing
+$space-biggest: 64px;
+$space-bigger: 48px;
+$space-regular: 32px;
+$space-smaller: 24px;
+$space-smallest: 16px;
+
+//others
+$box-shadow: 4px 4px 12px #2e231c2d;
+
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}

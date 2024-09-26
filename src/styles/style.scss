@@ -1,3 +1,11 @@
+@import "./variables";
+@import "./table";
+@import "./scrollbar.scss";
+@import "./footer";
+
+@include table;
+@include footer;
+
 * {
   margin: 0;
   padding: 0;
@@ -11,136 +19,208 @@ a {
   text-decoration: inherit;
 }
 
-$primary: #ccbaa0;
-$primary-darken: #baa27f;
-
 .wrapper {
-  position: relative;
-  max-width: 100vw;
-  min-height: 100vh;
-  background-color: $primary;
-
-  padding: 1rem;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+  background-color: $primary-lightest;
 }
 
-hgroup {
-  h1 {
-    font-size: 3rem;
-    margin-top: 1rem;
+.flex-container {
+  padding: 0 $space-smallest;
+}
+
+.logo-container {
+  height: auto;
+  margin-top: $space-bigger;
+  @include for-tablet-portrait-up {
+    padding-top: $space-regular;
   }
-  a:link {
-    font-size: 1.1rem;
-    text-decoration: none;
+  .logo {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
   }
+  p {
+    color: $primary-darkest;
+    font-size: $font-regular;
+    @include for-phone-only {
+      font-size: $font-smaller;
+    }
+    text-align: center;
+    span {
+      text-decoration: underline;
+    }
+  }
+}
+
+.translationParagraph {
+  min-height: 32px;
+  margin: $space-smallest 0;
+  font-size: $font-bigger;
+  color: $primary;
+  font-weight: bold;
 
   text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-input {
-  margin-top: 1rem;
-  max-width: 20rem;
-  padding: 0 10px;
-  height: 2.5rem;
-  font-size: 1.5rem;
-  font-family: monospace;
-
-  ::placeholder {
-    font-size: 1.3rem;
-  }
-}
-.translationParagraph {
-  font-size: 1.5rem;
   text-transform: uppercase;
-  margin: 1rem 0;
   text-decoration: underline;
 }
 
-table {
-  border-collapse: collapse;
+input {
+  display: block;
+  margin: 0 auto;
+
+  height: 52px;
   width: 100%;
-  margin-bottom: 1rem;
-  th,
-  td {
-    font-size: 1.2rem;
-    text-align: left;
-    padding: 10px;
-    border: 10px solid $primary-darken;
+  max-width: 720px;
+
+  box-shadow: $box-shadow;
+
+  @include for-phone-only {
+    height: 48px;
   }
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+  font-size: $font-biggest;
+  font-family: monospace;
 
-  th {
-    background-color: $primary-darken;
-    font-size: 1.5rem;
-  }
+  background-color: $white;
 
-  td {
-    text-transform: uppercase;
+  border: 2px solid $primary-lighter;
+  border-radius: 12px;
+}
+
+input::placeholder {
+  font-size: $font-regular;
+  color: $primary-lighter;
+  text-align: center;
+  padding-left: 5px;
+  @include for-phone-only {
+    font-size: $font-smaller;
   }
 }
 
-.morseCodeChart {
-  max-width: 100vw;
-  height: 500px;
-  padding: 0 10px;
-  margin-top: 3rem;
-}
-
-@media (max-width: 320px) {
-  .morseCodeChart {
-    margin-top: -3.5rem;
-  }
-}
-
-@media (min-width: 375px) {
-  .morseCodeChart {
-    margin-top: -3rem;
-  }
-}
-
-@media (min-width: 425px) {
-  .morseCodeChart {
-    margin-top: -2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  table {
-    width: 50%; // PC
-  }
-  .morseCodeChart {
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-  }
-}
-
-footer {
+.controls-container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 
-  border-top: 2px solid $primary-darken;
-  position: absolute;
-  bottom: 0;
-  padding: 5px;
-  a {
+  margin: $space-regular 0;
+
+  button {
+    height: 52px;
+    width: 52px;
+    margin: 8px;
+    box-shadow: $box-shadow;
+
+    @include for-phone-only {
+      height: 48px;
+      width: 48px;
+      margin: 0 6px;
+    }
+
+    font-size: $font-smallest;
+    color: $white;
+
+    background-color: $primary-darker;
+    border: 2px solid $primary-lighter;
+    border-radius: 12px;
+  }
+  .dot-btn,
+  .dash-btn {
+    font-size: $font-biggest;
+  }
+  .space-btn,
+  .bacspace-btn {
+    width: auto;
+    padding: 10px;
+    @include for-phone-only {
+      height: 48px;
+      width: auto;
+      font-size: 14px;
+    }
+  }
+  :hover {
+    cursor: pointer;
+    background-color: $primary;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+
+  margin-bottom: $space-biggest;
+
+  height: 500px;
+  width: 100%;
+
+  gap: $space-regular;
+  padding: 0 $space-smallest;
+
+  @include for-tablet-portrait-up {
+    flex-direction: row;
+  }
+  @include for-big-desktop-up {
+    gap: $space-biggest;
+  }
+
+  .table-box {
+    max-height: 500px;
+    max-width: 500px;
+    width: 500px;
+    flex: 1;
+
+    padding: $space-regular;
+
+    border-radius: 12px;
+    border: 2px solid $primary-lighter;
+    background-color: $white;
+
+    @include for-phone-only {
+      padding: $space-smaller;
+      width: 100%;
+    }
+  }
+
+  .table-container {
+    max-height: 400px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 2px solid $primary-lighter;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    @include scrollbar;
+  }
+  h2 {
+    margin-bottom: $space-smaller;
+    @include for-phone-only {
+      margin-bottom: $space-smallest;
+    }
+  }
+
+  .morseCodeChart-box {
     display: flex;
+    flex: 1;
+
+    max-width: 500px;
+
+    @include for-phone-only {
+      display: block;
+      margin-top: $space-regular;
+      max-height: 500px;
+      width: 90vw;
+      margin: 0 auto;
+    }
   }
-  img {
-    height: 20px;
-  }
-  p {
-    font-size: 0.95rem;
-    margin-left: 5px;
-    margin-top: 2.5px;
-    font-weight: 600;
+
+  .morseCodeChart {
+    height: auto;
+    max-height: 500px;
   }
 }

@@ -4,46 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morse Code Decoder</title>
+    <link
+      rel="shortcut icon"
+      href="./src//img/favicon-circle.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./src/styles/style.css" />
   </head>
   <body>
     <div class="wrapper">
-      <hgroup>
-        <h1>Morse Code Decoder</h1>
-        <p>
-          <a
-            target="_blank"
-            href="https://www.bombmanual.com/web/index.html#:~:text=On%20the%20Subject%20of%20Morse%20Code"
-            >For the keeptalking game</a
-          >
-        </p>
-      </hgroup>
-
-      <input
-        type="text"
-        name="morseCodeInput"
-        id="morseCodeInput"
-        class="morseCodeInput"
-        autocomplete="off"
-        placeholder="Enter morse code"
-      />
-      <p class="translationParagraph"></p>
-      <table class="possibleWordsTable"></table>
-      <img
-        class="morseCodeChart"
-        src="./src/svg/morseCodeChart.svg"
-        alt="morse code chart"
-      />
+      <div class="flex-container">
+        <div class="logo-container">
+          <img class="logo" src="./src/img/LogoLong.png" alt="logo" />
+          <p>
+            <a
+              tabindex="0"
+              target="_blank"
+              href="https://www.bombmanual.com/web/index.html#:~:text=On%20the%20Subject%20of%20Morse%20Code"
+              >For the <span>keeptalking game</span></a
+            >
+          </p>
+        </div>
+        <p class="translationParagraph">_</p>
+        <input
+          tabindex="1"
+          type="text"
+          name="morseCodeInput"
+          id="morseCodeInput"
+          class="morseCodeInput"
+          autocomplete="off"
+          placeholder="Type Morse using ‘.’ and ‘-’."
+        />
+        <div class="controls-container">
+          <button tabindex="2" class="dot-btn" type="button">.</button>
+          <button tabindex="3" class="dash-btn" type="button">-</button>
+          <button tabindex="4" class="space-btn" type="button">Space</button>
+          <button tabindex="5" class="bacspace-btn" type="button">
+            Bacspace
+          </button>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="table-box">
+          <h2>Possible words:</h2>
+          <div class="table-container">
+            <table class="possibleWordsTable"></table>
+          </div>
+        </div>
+        <div class="morseCodeChart-box">
+          <img
+            class="morseCodeChart"
+            src="./src/img/morseCodeChart.svg"
+            alt="morse code chart"
+          />
+        </div>
+      </div>
 
       <footer>
         <a target="_blank" href="https://github.com/LukaszGreiner">
-          <img
-            height="20 px"
-            src="./src/svg/github-mark.svg"
-            alt="github-mark"
-          />
-          <p>Łukasz Greiner</p></a
-        >
+          <p>
+            <span
+              ><img
+                height="20 px"
+                src="./src/img/github-mark.svg"
+                alt="github logo"
+            /></span>
+
+            Łukasz Greiner
+          </p>
+        </a>
       </footer>
     </div>
     <script type="module" src="dist/app.js"></script>

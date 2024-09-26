@@ -1,0 +1,42 @@
+@mixin table {
+}
+table {
+  width: 100%;
+  tr {
+    background-color: #f9f7f3;
+  }
+  tr:nth-child(even) {
+    background-color: #f1ede3;
+  }
+
+  td {
+    padding: 10px;
+    padding-left: 15px;
+    text-align: left;
+
+    color: $primary-darkest;
+    font-weight: bold;
+    font-size: $font-smaller;
+    text-transform: uppercase;
+  }
+}
+table {
+  width: 100%;
+  tr {
+    background-color: #f9f7f3;
+  }
+  tr:nth-child(even) {
+    background-color: #f1ede3;
+  }
+
+  td {
+    padding: 10px;
+    padding-left: 15px;
+    text-align: left;
+
+    color: $primary-darkest;
+    font-weight: bold;
+    font-size: $font-smaller;
+    text-transform: uppercase;
+  }
+}

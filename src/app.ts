@@ -1,7 +1,7 @@
 import { allWords, morseCodeAlphabet } from "./data/data.js";
 import { renderWordsTable } from "./utils/renderWordsTable.js";
 
-const morseCodeInput = document.querySelector(
+export const morseCodeInput = document.querySelector(
   "#morseCodeInput"
 ) as HTMLInputElement;
 
@@ -14,10 +14,34 @@ const possibleWordsTable = document.querySelector(
 ) as HTMLElement;
 const allWordsList = document.querySelector(".allWordsList") as HTMLElement;
 
+// Buttons
+const dashBtn = document.querySelector(".dash-btn") as HTMLButtonElement;
+const dotBtn = document.querySelector(".dot-btn") as HTMLButtonElement;
+const spaceBtn = document.querySelector(".space-btn") as HTMLButtonElement;
+const bacspaceBtn = document.querySelector(
+  ".bacspace-btn"
+) as HTMLButtonElement;
+
+// Handling buttons
+bacspaceBtn.addEventListener("click", () => {
+  morseCodeInput.value = morseCodeInput.value.slice(0, -1);
+  //trigger input eventlistner
+  morseCodeInput.dispatchEvent(new Event("input"));
+});
+function handleButton(btnElement: HTMLButtonElement, value: string) {
+  btnElement.addEventListener("click", () => {
+    morseCodeInput.value += value;
+    morseCodeInput.dispatchEvent(new Event("input"));
+  });
+}
+handleButton(dashBtn, "-");
+handleButton(dotBtn, ".");
+handleButton(spaceBtn, " ");
+
 // Handle user input & update translation
 
 // Prevent invalid keys using keydown
-morseCodeInput.addEventListener("keydown", (e) => {
+morseCodeInput?.addEventListener("keydown", (e) => {
   const allowedKeys = [
     ".",
     "-",
@@ -26,6 +50,7 @@ morseCodeInput.addEventListener("keydown", (e) => {
     "ArrowLeft",
     "ArrowRight",
     "Delete",
+    "Tab",
   ];
 
   // allow ctrl combinations
@@ -36,16 +61,24 @@ morseCodeInput.addEventListener("keydown", (e) => {
   }
 });
 
-morseCodeInput.addEventListener("input", (e) => {
-  if (morseCodeInput.value === "") renderWordsTable([], possibleWordsTable);
+morseCodeInput?.addEventListener("input", (e) => {
+  if (morseCodeInput.value === "") {
+    renderWordsTable(allWords, possibleWordsTable);
+    translationParagraph.textContent = "_";
+    return;
+  }
 
   let morseCode = morseCodeInput.value;
 
   const characters = convertMorseToEnglish(morseCode);
   translationParagraph.textContent = characters;
+  console.log(characters);
 
   //prevent
-  if (characters.length === 0) return;
+  if (characters.length === 0) {
+    renderWordsTable([], possibleWordsTable);
+    return;
+  }
   const possibleWords = findWordsWithCharacters(characters, allWords);
   renderWordsTable(possibleWords, possibleWordsTable);
 });
@@ -82,7 +115,4 @@ function findWordsWithCharacters(
   return matchingWords;
 }
 
-renderWordsTable([], possibleWordsTable);
-
-// render list of words when user input is empty
-// !morseCodeInput.value && renderWordsTable(allWords, possibleWordsTable);
+renderWordsTable(allWords, possibleWordsTable);
