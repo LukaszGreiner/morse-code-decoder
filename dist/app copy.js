@@ -1,5 +1,4 @@
-import { keepTalkingWordsData, morseCodeAlphabet } from "./data/data.js";
-import { findWordsWithCharacters } from "./utils/findWordsWithCharacters.js";
+import { allWords, morseCodeAlphabet } from "./data/data.js";
 import { renderWordsTable } from "./utils/renderWordsTable.js";
 export const morseCodeInput = document.querySelector("#morseCodeInput");
 const translationParagraph = document.querySelector(".translationParagraph");
@@ -47,19 +46,20 @@ morseCodeInput === null || morseCodeInput === void 0 ? void 0 : morseCodeInput.a
 });
 morseCodeInput === null || morseCodeInput === void 0 ? void 0 : morseCodeInput.addEventListener("input", (e) => {
     if (morseCodeInput.value === "") {
-        renderWordsTable(keepTalkingWordsData, possibleWordsTable);
+        renderWordsTable(allWords, possibleWordsTable);
         translationParagraph.textContent = "_";
         return;
     }
     let morseCode = morseCodeInput.value;
     const characters = convertMorseToEnglish(morseCode);
     translationParagraph.textContent = characters;
+    console.log(characters);
     //prevent
     if (characters.length === 0) {
         renderWordsTable([], possibleWordsTable);
         return;
     }
-    const possibleWords = findWordsWithCharacters(characters, keepTalkingWordsData);
+    const possibleWords = findWordsWithCharacters(characters, allWords);
     renderWordsTable(possibleWords, possibleWordsTable);
 });
 function convertMorseToEnglish(morseString) {
@@ -68,6 +68,18 @@ function convertMorseToEnglish(morseString) {
         const char = morseCodeAlphabet.find((char) => char.morseCode === morseChar);
         char && characters.push(char.letter);
     });
+    console.log(characters);
     return characters.join("").toLowerCase();
 }
-renderWordsTable(keepTalkingWordsData, possibleWordsTable);
+function findWordsWithCharacters(characters, wordsArray) {
+    const characterSet = new Set(characters);
+    const matchingWords = [];
+    for (const word of wordsArray) {
+        const wordSet = new Set(word);
+        if (Array.from(characterSet).every((char) => wordSet.has(char)))
+            matchingWords.push(word);
+    }
+    console.log(characterSet);
+    return matchingWords;
+}
+renderWordsTable(allWords, possibleWordsTable);

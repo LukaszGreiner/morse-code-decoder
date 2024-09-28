@@ -1,4 +1,5 @@
-import { allWords, morseCodeAlphabet } from "./data/data.js";
+import { keepTalkingWordsData, morseCodeAlphabet } from "./data/data.js";
+import { findWordsWithCharacters } from "./utils/findWordsWithCharacters.js";
 import { renderWordsTable } from "./utils/renderWordsTable.js";
 
 export const morseCodeInput = document.querySelector(
@@ -63,7 +64,7 @@ morseCodeInput?.addEventListener("keydown", (e) => {
 
 morseCodeInput?.addEventListener("input", (e) => {
   if (morseCodeInput.value === "") {
-    renderWordsTable(allWords, possibleWordsTable);
+    renderWordsTable(keepTalkingWordsData, possibleWordsTable);
     translationParagraph.textContent = "_";
     return;
   }
@@ -72,14 +73,16 @@ morseCodeInput?.addEventListener("input", (e) => {
 
   const characters = convertMorseToEnglish(morseCode);
   translationParagraph.textContent = characters;
-  console.log(characters);
 
   //prevent
   if (characters.length === 0) {
     renderWordsTable([], possibleWordsTable);
     return;
   }
-  const possibleWords = findWordsWithCharacters(characters, allWords);
+  const possibleWords = findWordsWithCharacters(
+    characters,
+    keepTalkingWordsData
+  );
   renderWordsTable(possibleWords, possibleWordsTable);
 });
 
@@ -91,28 +94,8 @@ function convertMorseToEnglish(morseString: string) {
 
     char && characters.push(char.letter);
   });
-  console.log(characters);
 
   return characters.join("").toLowerCase();
 }
 
-function findWordsWithCharacters(
-  characters: string | string[],
-  wordsArray: string[]
-) {
-  const characterSet = new Set(characters);
-  const matchingWords = [];
-
-  for (const word of wordsArray) {
-    const wordSet = new Set(word);
-
-    if (Array.from(characterSet).every((char) => wordSet.has(char)))
-      matchingWords.push(word);
-  }
-
-  console.log(characterSet);
-
-  return matchingWords;
-}
-
-renderWordsTable(allWords, possibleWordsTable);
+renderWordsTable(keepTalkingWordsData, possibleWordsTable);
