@@ -1,0 +1,74 @@
+$radio-border-color: $clr-dark;
+$radio-checked-color: $clr-primary;
+$radio-hover-color: $clr-white;
+$radio-disabled-bg-color: #d9d9d9;
+
+input[type="radio"] {
+  box-sizing: border-box;
+  @include size($size-lg);
+  min-width: 1rem;
+  margin: 6px;
+  padding: 0;
+  border: 2px solid $radio-border-color;
+  border-radius: 50%;
+  appearance: none;
+  background-color: transparent;
+  outline: none;
+  transition: outline 0.1s;
+
+  &:not(:disabled):checked {
+    border-color: $radio-checked-color;
+    background-color: $radio-checked-color;
+    background-clip: content-box;
+    padding: 2px;
+    background-image: radial-gradient(
+      circle,
+      $radio-checked-color 0%,
+      $radio-checked-color 50%,
+      transparent 60%,
+      transparent 100%
+    );
+  }
+
+  &:disabled {
+    background-color: $radio-disabled-bg-color;
+  }
+
+  &:disabled:checked {
+    background-image: radial-gradient(
+      circle,
+      $radio-border-color 0%,
+      $radio-border-color 50%,
+      transparent 50%,
+      transparent 100%
+    );
+  }
+
+  &:focus-visible {
+    background-color: $radio-hover-color;
+    outline: 6px solid $radio-hover-color;
+    transform: scale(1.05);
+  }
+
+  @media (hover: hover) {
+    &:not(:disabled):hover {
+      background-color: $radio-hover-color;
+      outline: 6px solid $radio-hover-color;
+      transform: scale(1.05);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:focus-visible {
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) and (hover: hover) {
+    &:not(:disabled):hover {
+      transform: scale(1);
+    }
+  }
+}

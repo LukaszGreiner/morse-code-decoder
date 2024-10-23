@@ -1,0 +1,45 @@
+.table-and-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 3rem;
+}
+
+.table-container {
+  flex: 1;
+}
+.chart-container {
+  flex: 1;
+}
+/* xs */
+/* @media (min-width: 475px) {
+} */
+/* sm */
+@media (min-width: 640px) {
+  .table-and-chart {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+/* md */
+@media (min-width: 768px) {
+  .table-and-chart {
+    gap: 2rem;
+  }
+}
+/* lg */
+@media (min-width: 1024px) {
+  .table-and-chart {
+    gap: 3rem;
+  }
+}
+/* xl */
+/*@media (min-width: 1280px) {
+}*/
+
+/* 2xl */
+/* @media (min-width: 1536px) {
+} */

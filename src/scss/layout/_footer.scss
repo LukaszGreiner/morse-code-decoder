@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  place-content: center;
+  width: 100%;
+  padding: 2px 0;
+  text-align: center;
+  background-color: $clr-primary;
+  color: $clr-primary-darker;
+}
+
+.footer__author {
+  a {
+    display: flex;
+    place-items: center;
+    gap: 0.2rem;
+    font-size: $size-sm;
+    color: $clr-white;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    .copyright {
+      font-size: $size-xl;
+    }
+  }
+}
+
+.footer__author img {
+  height: 1.5rem;
+}

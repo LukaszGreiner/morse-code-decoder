@@ -1,0 +1,103 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 1rem;
+
+  flex: 1;
+}
+
+.translated-morse-code {
+  font-size: $size-2xl;
+  font-weight: bold;
+  min-height: 2rem;
+  color: $clr-primary-darker;
+  text-decoration: underline;
+  text-transform: uppercase;
+  max-width: calc(100vw - 32px);
+  overflow-x: auto;
+}
+
+.controls__morse-input {
+  height: $size-4xl;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 4px 4px 12px rgba(46, 35, 28, 0.1764705882);
+  font-size: 32px;
+  font-family: monospace;
+  background-color: $clr-white;
+  border: 2px solid $clr-primary;
+  border-radius: 12px;
+}
+.controls__morse-input:focus {
+  outline-color: $clr-primary-darker;
+}
+.controls__morse-input::placeholder {
+  font-size: $size-base;
+  padding-left: 0.5rem;
+  text-align: center;
+}
+
+.buttons-container {
+  max-width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 0 10px;
+}
+
+.btn {
+  height: 2.4rem;
+  width: 2.4rem;
+  font-size: $size-3xl;
+  text-align: center;
+
+  color: $clr-white;
+  background-color: $clr-primary;
+
+  border: 2px solid $clr-primary-lighter;
+  box-shadow: 0 5px #666;
+
+  border-radius: 12px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  background-color: $clr-dark;
+}
+
+.btn:active {
+  box-shadow: 0 5px $clr-primary;
+  transform: translateY(4px);
+}
+
+.space-btn,
+.bacspace-btn {
+  font-size: $size-sm;
+  width: $size-8xl;
+}
+.space-btn {
+  width: $size-7xl;
+}
+
+/* xs */
+@media (min-width: 475px) {
+  .controls__morse-input::placeholder {
+    font-size: $size-xl;
+    padding-left: 0.5rem;
+  }
+}
+/* sm */
+@media (min-width: 640px) {
+}
+/* md */
+/* @media (min-width: 768px) {
+} */
+/* lg */
+/* @media (min-width: 1024px) {
+} */
+/* xl */
+/* @media (min-width: 1280px) {
+} */
+/* 2xl */
+/* @media (min-width: 1536px) {
+} */

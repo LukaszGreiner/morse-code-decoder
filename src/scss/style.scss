@@ -1,0 +1,43 @@
+@charset 'utf-8';
+
+@import "base/modern-normalize";
+@import "base/reset";
+
+@import "abstracts/mixins";
+@import "abstracts/variables";
+@import "abstracts/utils";
+
+@import "layout/header";
+@import "layout/footer";
+
+@import "components/_radio";
+@import "components/mobile-nav";
+@import "components/language-menu";
+@import "components/controls";
+@import "components/table-and-chart";
+@import "components/table";
+@import "components/chart-container";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $clr-light;
+  color: $clr-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: $clr-primary;
+}
+
+strong {
+  color: $clr-dark;
+}
